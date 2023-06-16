@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="material_regis_view_tree" model="ir.ui.view">
+        <field name="name">material.regis.view.tree</field>
+        <field name="model">material.registrasi</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="buy_price"/>
+                <field name="supplier_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="material_regis_view_form" model="ir.ui.view">
+        <field name="name">material.regis.view.form</field>
+        <field name="model">material.registrasi</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="buy_price"/>
+                            <field name="supplier_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="material_regis_view_search" model="ir.ui.view">
+        <field name="name">material.regis.view.search</field>
+        <field name="model">material.registrasi</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <group expand="0" string="Group By">
+                    <filter string="Type Material" name="type" domain="[]" context="{'group_by': 'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_material_regis" model="ir.actions.act_window">
+        <field name="name">Material Registrasi</field>
+        <field name="res_model">material.registrasi</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Dashborad -->
+    <menuitem
+        id="dashboard_material_regis"
+        name="Material Registrasi"
+    />
+    
+    <!-- Menu Bar -->
+    <menuitem
+        id="bar_material_regis"
+        name="Material"
+        parent="dashboard_material_regis"
+    />
+
+    <!-- Menu Items -->
+    <menuitem
+        id="item_menu_material_regis"
+        name="Material"
+        parent="bar_material_regis"
+        action="action_material_regis"
+    />
+
+</odoo>
